@@ -1,0 +1,15 @@
+// Removes awkward default styles on some inputs for iOS
+input {
+  &[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+input {
+  &[type="date"]:focus {
+    border: 1px solid $primary-color;
+    outline: 0;
+  }
+}
