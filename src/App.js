@@ -4,9 +4,7 @@ import NavHeader from "./widgets/NavHeader";
 import {BrowserRouter} from "react-router-dom";
 import Routes from "./widgets/Routes";
 import {UserContext} from "./contexts";
-import requests from "./utils/requests";
 import account from "./utils/requests/account";
-import ErrorHandler from "./utils/errorHandler";
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +26,7 @@ class App extends React.Component {
     if (token != null) {
       try {
         const response = await account.getUser();
-        this.setState({user: response.data});
+        this.setState({ user: response.data });
       } catch(e) {
         localStorage.clear();
         // ErrorHandler.handleRequestError(e);
