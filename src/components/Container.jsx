@@ -1,12 +1,12 @@
 import * as React from "react";
 
 class Container extends React.Component {
-  defaultProps = {
+  static defaultProps = {
     className: "",
   };
 
   render() {
-    const props = {...this.defaultProps, ...this.props};
+    const props = {...Container.defaultProps, ...this.props};
     return <div className={`container ${props.className}`}>{this.props.children}</div>;
   }
 }

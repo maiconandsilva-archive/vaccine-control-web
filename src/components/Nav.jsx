@@ -2,18 +2,16 @@ import * as React from "react";
 import Container from "./Container";
 
 class Nav extends React.Component {
-  defaultProps = {
-    className: "",
+  static defaultProps = {
+    className: "top-navbar",
   };
 
   render() {
-    const props = {...this.defaultProps, ...this.props};
+    const props = {...Nav.defaultProps, ...this.props};
     return (
-        <nav className={props.className}>
-          <Container>
-            {this.props.children}
-          </Container>
-        </nav>
+      <nav className={props.className}>
+        <Container>{props.children}</Container>
+      </nav>
     );
   }
 }

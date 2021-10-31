@@ -1,14 +1,14 @@
 import * as React from "react";
 
 class Column extends React.Component {
-  defaultProps = {
+  static defaultProps = {
     span: "six",
     className: "",
     children: <div style={{"display": "inline-block"}}/>
   };
 
   render() {
-    const props = {...this.defaultProps, ...this.props};
+    const props = {...Column.defaultProps, ...this.props};
     return (
       <div className={`${props.span} columns ${props.className}`}>
         {props.children}

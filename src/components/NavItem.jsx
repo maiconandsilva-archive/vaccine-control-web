@@ -1,18 +1,19 @@
 import * as React from "react";
 import {NavLink} from "react-router-dom";
-import Container from "./Container";
 
 class NavItem extends React.Component {
-  defaultProps = {
+  static defaultProps = {
+    activeClassName: "active",
     className: "",
   };
 
   render() {
-    const props = {...this.defaultProps, ...this.props};
+    const props = {...NavItem.defaultProps, ...this.props};
     return (
-        <div>
-          <NavLink to={props.to}>{props.children}</NavLink>
-        </div>
+      <NavLink to={props.to} activeClassName={props.activeClassName}
+               className={`nav-link ${props.className}`}>
+        {props.children}
+      </NavLink>
     );
   }
 }
