@@ -3,12 +3,8 @@ import {Redirect} from "react-router-dom";
 import Routes from "../widgets/Routes";
 
 class SignOut extends React.Component {
-  defaultProps = {
-    className: "",
-  };
-
   render() {
-    // TODO: Remove token from localStorage
+    localStorage.clear();
     return <Redirect to={Routes.SIGN_IN}/>;
   }
 }

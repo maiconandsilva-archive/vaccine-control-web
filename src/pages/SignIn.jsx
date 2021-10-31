@@ -6,31 +6,41 @@ import Column from "../components/Column";
 import {Link} from "react-router-dom";
 import Routes from "../widgets/Routes";
 import Button from "../components/Button";
-import {  } from "react-router-dom";
+import {AxiosResponse} from "axios";
+import {UserContext} from "../contexts";
+import ErrorHandler from "../utils/errorHandler";
+import account from "../utils/requests/account";
 
 class SignIn extends React.Component {
-  defaultProps = {
-    // title: "",
-    className: "",
-  };
+  static contextType = UserContext;
 
-  signIn() {
-
+  async signIn() {
+    try {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const response: AxiosResponse = await account.authenticate({ email, password });
+      localStorage.setItem("token", response.data.token);
+      this.context.loadOrRefreshUser();
+      this.props.history.push(Routes.VACCINATION);
+    } catch (e) {
+      ErrorHandler.handleRequestError(e);
+    }
   }
 
   render() {
-    // const props = {...this.defaultProps, ...this.props};
     return (
-        <Row className="screen-centered-wrapper">
-          <Column>
-            <Form title="Sign in">
-              <Row><Input type="email" label="Email" placeholder="myemail@example.com"/></Row>
-              <Row><Input type="password" placeholder="Password"/></Row>
-              <Row><Button onClick={this.signIn}>SIGN IN</Button></Row>
-            </Form>
-            <Row className="centered"><Link to={Routes.SIGN_UP}>Sign up</Link></Row>
-          </Column>
-        </Row>
+      <Row className="screen-centered-content">
+        <Column>
+          <Form title="Sign in">
+            <Row><Input type="email" placeholder="Email"/></Row>
+            <Row><Input type="password" placeholder="Password"/></Row>
+            <Row><Button onClick={() => this.signIn()}>SIGN IN</Button></Row>
+          </Form>
+          <Row className="centered">
+            <Link to={Routes.SIGN_UP}>Don’t have an account? Sign up now!</Link>
+          </Row>
+        </Column>
+      </Row>
     );
   }
 }

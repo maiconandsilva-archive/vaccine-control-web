@@ -10,3 +10,13 @@ input {
     box-sizing: border-box;
   }
 }
+
+
+
+.secondary {
+ background: black;
+}
+
+.secondary:hover {
+  background: lighten($dark-grey, 33.3%);;
+}

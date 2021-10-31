@@ -1,7 +1,9 @@
-@import "~skeleton-scss/scss/skeleton";
-
 @import "base/variables";
+
+@import "~skeleton-scss/scss/skeleton";
 @import "base/utils";
 @import "modules/spacing";
 @import "modules/forms";
 @import "modules/buttons";
+@import "modules/navbar";
+@import "modules/miscelaneous";

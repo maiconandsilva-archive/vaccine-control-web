@@ -1,33 +1,49 @@
 import * as React from "react";
-import Input from "../components/Input";
 import Row from "../components/Row";
-import Form from "../components/Form";
 import Column from "../components/Column";
-import Button from "../components/Button";
+import {UserContext} from "../contexts";
+import {Link} from "react-router-dom";
+import Routes from "../widgets/Routes";
 
 class UserProfile extends React.Component {
-  defaultProps = {
-    // title: "",
-    className: "",
-  };
+  static contextType = UserContext;
 
   render() {
-    // const props = {...this.defaultProps, ...this.props};
+    const user = this.context.user;
+
     return (
-        <Row className="screen-centered-wrapper">
-          <Column span="eight">
-            <Form title="Profile">
-              <Row>
-                <Input type="email" span="eight" placeholder="Email"/>
-                <Button span="four">Update Email</Button>
-              </Row>
-              <Row>
-                <Input span="eight"  type="password" placeholder="Password"/>
-                <Button span="four">Update Password</Button>
-              </Row>
-            </Form>
-          </Column>
-        </Row>
+      <Row className="content-container">
+        <Column span="offset-by-two eight">
+          <Row>
+            <Column span="nine"><h4>Profile</h4></Column>
+            <Column span="three">
+              <Link to={Routes.USER_PROFILE_UPDATE} className="button u-full-width">Edit Profile</Link>
+            </Column>
+          </Row>
+          <Row>
+            <table className="u-full-width">
+              <tbody>
+                <tr>
+                  <td className="info-title">Email</td>
+                  <td>{user.email}</td>
+                </tr>
+                <tr>
+                  <td className="info-title">Type</td>
+                  <td>{user.type}</td>
+                </tr>
+                <tr>
+                  <td className="info-title">Creation Date</td>
+                  <td>{user.createdAt}</td>
+                </tr>
+                <tr>
+                  <td className="info-title">Updated Date</td>
+                  <td>{user.updatedAt}</td>
+                </tr>
+              </tbody>
+            </table>
+          </Row>
+        </Column>
+      </Row>
     );
   }
 }

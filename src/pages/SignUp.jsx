@@ -6,26 +6,40 @@ import Column from "../components/Column";
 import {Link} from "react-router-dom";
 import Routes from "../widgets/Routes";
 import Button from "../components/Button";
+import ErrorHandler from "../utils/errorHandler";
+import account from "../utils/requests/account";
+import Notification from "../utils/notification"
 
 class SignUp extends React.Component {
-  defaultProps = {
-    // title: "",
-    className: "",
-  };
+  async signUp() {
+    try {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      await account.signup({ email, password, });
+      this.props.history.push(Routes.SIGN_IN);
+      Notification.showSuccess("Account created successfully");
+    } catch (e) {
+      ErrorHandler.handleRequestError(e);
+    }
+  }
 
   render() {
-    // const props = {...this.defaultProps, ...this.props};
     return (
-        <Row className="screen-centered-wrapper">
-          <Column>
+      <Row className="screen-centered-content">
+        <Column span="eight">
+          <Row>
             <Form title="Sign up">
-              <Row><Input type="email" label="Email" placeholder="myemail@example.com"/></Row>
+              <Row><Input type="email" placeholder="Email"/></Row>
               <Row><Input type="password" placeholder="Password"/></Row>
-              <Row><Button>SIGN UP</Button></Row>
+              <Row><Input type="password" placeholder="Password Confirmation"/></Row>
+              <Row><Button onClick={() => this.signUp()}>SIGN UP</Button></Row>
             </Form>
-            <Row className="centered"><Link to={Routes.SIGN_IN}>Sign in</Link></Row>
-          </Column>
-        </Row>
+          </Row>
+          <Row className="centered">
+            <Link to={Routes.SIGN_IN}>Already have an account? Sign in!</Link>
+          </Row>
+        </Column>
+      </Row>
     );
   }
 }

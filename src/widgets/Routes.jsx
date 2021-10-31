@@ -8,6 +8,7 @@ import Vaccination from "../pages/Vaccination";
 import Vaccines from "../pages/admin/Vaccines";
 import SignOut from "../pages/SignOut";
 import UserManagement from "../pages/admin/UserManagement";
+import UserProfileUpdate from "../pages/UserProfileUpdate";
 
 class Routes extends React.Component {
   static SIGN_IN = "/signin";
@@ -17,38 +18,21 @@ class Routes extends React.Component {
   static VACCINATION = "/vaccination";
   static VACCINES = "/admin/vaccines";
   static USER_MANAGEMENT = "/admin/users";
-
-  defaultProps = {
-    // title: "",
-    className: "",
-  };
+  static USER_PROFILE_UPDATE = "/profile/update";
 
   render() {
-    // const props = {...this.defaultProps, ...this.props};
     return (
       <Container>
-        <Switch className="container">
-          <Route exact path={Routes.SIGN_IN}>
-            <SignIn/>
-          </Route>
-          <Route exact path={Routes.SIGN_UP}>
-            <SignUp/>
-          </Route>
-          <Route exact path={Routes.VACCINATION}>
-            <Vaccination/>
-          </Route>
-          <Route exact path={Routes.USER_PROFILE}>
-            <UserProfile/>
-          </Route>
-          <Route exact path={Routes.VACCINES}>
-            <Vaccines/>
-          </Route>
-          <Route exact path={Routes.USER_MANAGEMENT}>
-            <UserManagement/>
-          </Route>
-          <Route exact path={Routes.SIGN_OUT}>
-            <SignOut/>
-          </Route>
+        <Switch>
+          <Route exact path={Routes.SIGN_IN} component={SignIn}/>
+          <Route exact path={Routes.SIGN_UP} component={SignUp}/>
+          <Route exact path={Routes.VACCINATION} component={Vaccination}/>
+          <Route exact path={Routes.USER_PROFILE} component={UserProfile}/>
+          <Route exact path={Routes.USER_PROFILE_UPDATE} component={UserProfileUpdate}/>
+          <Route exact path={Routes.VACCINES} component={Vaccines}/>
+          <Route exact path={Routes.USER_MANAGEMENT} component={UserManagement}/>
+          <Route exact path={Routes.SIGN_OUT} component={SignOut}/>
+          {/*<Route component={Error}/>*/}
         </Switch>
       </Container>
     );

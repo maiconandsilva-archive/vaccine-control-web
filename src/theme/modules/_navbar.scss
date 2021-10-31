@@ -1,0 +1,38 @@
+.top-navbar {
+  width: 100%;
+
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background-color: black;
+  font-size: 15px;
+
+  .nav-link {
+    display: inline-block;
+    width: 100px;
+    height: 55px;
+    color: White;
+    text-align: center;
+    line-height: 55px;
+    text-decoration: none;
+  }
+
+  .home-link {
+    width: 120px;
+    background-color: $app-color;
+    font-weight: bold;
+    border: $app-color solid 2px;
+  }
+
+  .nav-link-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .nav-link.highlighted.active {
+    color: $app-color;
+    border-bottom: $app-color solid 2px;
+  }
+}
