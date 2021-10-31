@@ -1,0 +1,21 @@
+$column-margin-tmp: $column-margin;
+$column-margin: 0%;
+
+.one.w-column,
+.one.w-columns           { width: grid-column-width(1);  }
+.two.w-columns           { width: grid-column-width(2);  }
+.three.w-columns         { width: grid-column-width(3);  }
+.four.w-columns          { width: grid-column-width(4);  }
+.five.w-columns          { width: grid-column-width(5);  }
+.six.w-columns           { width: grid-column-width(6);  }
+.seven.w-columns         { width: grid-column-width(7);  }
+.eight.w-columns         { width: grid-column-width(8);  }
+.nine.w-columns          { width: grid-column-width(9);  }
+.ten.w-columns           { width: grid-column-width(10); }
+.eleven.w-columns        { width: grid-column-width(11); }
+.twelve.w-columns        { width: 100%  }
+.one-third.w-columns     { width: grid-column-width(4);  }
+.two-thirds.w-columns    { width: grid-column-width(8);  }
+.one-half.w-columns      { width: grid-column-width(6);  }
+
+$column-margin: $column-margin-tmp;
