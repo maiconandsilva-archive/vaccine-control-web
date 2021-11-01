@@ -29,13 +29,16 @@ class NavHeader extends React.Component {
   }
 
   render() {
-    console.log(`User TYPE: ${this.context.user.type}`)
     return (
         <header>
           <NavBar>
             <NavItem to="/" className="home-link">VAX MNGR.</NavItem>
-            <NavItem to={Routes.USER_PROFILE} className="highlighted">Profile</NavItem>
-            <NavItem to={Routes.VACCINATION} className="highlighted">Vaccination</NavItem>
+            {isUserAuthenticated() &&
+              <>
+                <NavItem to={Routes.USER_PROFILE} className="highlighted">Profile</NavItem>
+                <NavItem to={Routes.VACCINATION} className="highlighted">Vaccination</NavItem>
+              </>
+            }
             {this.context.user.type === users.USER_TYPE_ENUM.admin &&
               <>
                 <NavItem to={Routes.VACCINES} className="highlighted">Vaccines</NavItem>
