@@ -28,7 +28,7 @@ class SignUp extends React.Component {
       <Row className="screen-centered-content">
         <Column span="eight">
           <Row>
-            <Form title="Sign up">
+            <Form title="Sign up" className="title">
               <Row><Input type="email" placeholder="Email"/></Row>
               <Row><Input type="password" placeholder="Password"/></Row>
               <Row><Input type="password" placeholder="Password Confirmation"/></Row>

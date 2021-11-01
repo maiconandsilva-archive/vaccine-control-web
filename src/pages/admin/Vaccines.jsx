@@ -47,7 +47,7 @@ class Vaccines extends React.Component {
       <Row className="content-container">
         <Column className="offset-by-one ten">
           <Row>
-            <Form title="Vaccines">
+            <Form title="Vaccines" className="title">
               <Row>
                 <Input span="five" placeholder="Name"/>
                 <Input span="four" placeholder="Manufacturer"/>
@@ -59,18 +59,18 @@ class Vaccines extends React.Component {
             { vaccines.length !== 0 ?
               <table className="u-full-width">
                 <thead>
-                  <tr>
+                  <tr className="info-title">
                     <th>Name</th>
-                    <th colSpan={2}>Manufacturer</th>
+                    <th>Manufacturer</th>
                   </tr>
                 </thead>
                 <tbody>
-                  { vaccines.map(vaccine => {
+                  { vaccines.map((vaccine, index) => {
                     return (
-                      <tr>
+                      <tr key={index}>
                         <td>{vaccine.name}</td>
                         <td>{vaccine.manufacturer}</td>
-                        <td style={{textAlign: "right"}}><input type="button" value="Edit"/></td>
+                        {/*<td style={{textAlign: "right"}}><Input type="button" value="Edit"/></td>*/}
                       </tr>
                     );
                   })}

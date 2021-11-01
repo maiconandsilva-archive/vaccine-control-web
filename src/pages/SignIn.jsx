@@ -20,7 +20,7 @@ class SignIn extends React.Component {
       const password = document.getElementById("password").value;
       const response: AxiosResponse = await account.authenticate({ email, password });
       localStorage.setItem("token", response.data.token);
-      this.context.loadOrRefreshUser();
+      await this.context.loadOrRefreshUser();
       this.props.history.push(Routes.VACCINATION);
     } catch (e) {
       ErrorHandler.handleRequestError(e);
@@ -31,7 +31,7 @@ class SignIn extends React.Component {
     return (
       <Row className="screen-centered-content">
         <Column>
-          <Form title="Sign in">
+          <Form title="Sign in" className="title">
             <Row><Input type="email" placeholder="Email"/></Row>
             <Row><Input type="password" placeholder="Password"/></Row>
             <Row><Button onClick={() => this.signIn()}>SIGN IN</Button></Row>

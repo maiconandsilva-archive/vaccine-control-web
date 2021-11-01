@@ -9,13 +9,13 @@ class UserProfile extends React.Component {
   static contextType = UserContext;
 
   render() {
-    const user = this.context.user;
+    const { user } = this.context;
 
     return (
       <Row className="content-container">
         <Column span="offset-by-two eight">
           <Row>
-            <Column span="nine"><h4>Profile</h4></Column>
+            <Column span="nine"><h4 className="title">Profile</h4></Column>
             <Column span="three">
               <Link to={Routes.USER_PROFILE_UPDATE} className="button u-full-width">Edit Profile</Link>
             </Column>
