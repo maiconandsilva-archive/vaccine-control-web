@@ -2,7 +2,7 @@ import requests from "../requests";
 
 class Users {
   static BASE_PATH = "/users"
-  USER_TYPE_ENUM = { admin: "ADMIN", user: "USER" }
+  USER_TYPE_ENUM = { admin: "admin", user: "user" }
 
   async getAll() {
     return requests.get(`${Users.BASE_PATH}`);
